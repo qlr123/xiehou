@@ -1,5 +1,5 @@
 # app-vue
-
+快来肝
 ## Project setup
 ```
 npm install
