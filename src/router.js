@@ -7,9 +7,11 @@ import Forgetpwd from "./views/myself/forgetpwd.vue"
 import Yz from "./components/myself/Yz.vue"
 import Xg from "./components/myself/Xg.vue"
 import Myself from "./views/myself/myself.vue"
+import Xq from "./views/activity/Xq.vue";
+import Bm from "./views/activity/Bm.vue";
+import Hd from "./views/activity/Hd.vue"
+
 Vue.use(Router);
-
-
 export default new Router({
   routes: [
     {
@@ -21,17 +23,14 @@ export default new Router({
           path:'/myself',
           name:'Myself',
           component:Myself
+        },
+        {
+          path:"/hd",
+          name:"Hd",
+          component:Hd
         }
       ]
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // }
     {
       path:'/login',
       name:'Login',
@@ -58,6 +57,17 @@ export default new Router({
           component:Xg
         }
       ]
+    },
+    {
+      path:"/xq",
+      name:"Xq",
+      component:Xq
+    },
+    {
+      path:"/bm",
+      name:"Bm",
+      component:Bm
     }
+    
   ]
 });

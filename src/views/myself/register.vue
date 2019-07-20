@@ -123,12 +123,20 @@ export default {
                 data:qs.stringify({email:this.email,password:this.password,yzm:this.sms}),
             }).then((data)=>{
                 console.log(data)
-
-            }).catch((data)=>{
-                console.log(data)
+                if(data.data==-1){
+                    Toast.fail('注册失败，请稍后尝试!');
+                }else if(data.data==-2)
+                {
+                    Toast.fail('验证码错误');
+                }else
+                {
+                    Toast.success('注册成功！请登录');
+                    this.$router.push({path:'/login'})
+                }
             })
         }
     }
+
 }
 </script>
 <style scoped>
