@@ -1,19 +1,56 @@
 <template>
-  <div>
-    <van-nav-bar title="标题" left-text="返回" right-text="按钮" left-arrow />
+  <div id="header-box">
+    <van-nav-bar 
+    :title="this.$store.state.title" 
+    :left-text="this.$store.state.leftTitle" 
+    :right-text="this.$store.state.rightTitle" 
+    left-arrow 
+    @click-left="onClickLeft"
+    @click-right="onClickRight"
+    />
   </div>
 </template>
 
 <script>
 export default {
   name: "tou",
+  data(){
+    return{
+
+    }
+    
+  },
   methods: {
-    onClickLeft() {
-      Toast("返回");
+    onClickLeft(){
+      this.$router.go(-1)
     },
-    onClickRight() {
-      Toast("按钮");
+    onClickRight(){
+      
     }
   }
 };
 </script>
+<style scoped>
+#header-box .van-nav-bar
+{
+  background: #fa6481;
+  height: 48px;
+  display: flex;
+}
+#header-box .van-nav-bar .van-icon
+{
+  color: #fff
+}
+#header-box .van-nav-bar__text
+{
+  color: #fff;
+  line-height: 48px
+}
+#header-box .van-nav-bar__title
+{
+  color:	#fff;
+  letter-spacing: 2px;
+  font-size: 15px
+}
+</style>
+

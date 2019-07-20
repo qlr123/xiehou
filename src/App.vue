@@ -6,24 +6,21 @@
 
 
 <style>
+body,ul,li,dl,dt,dd,p,ol,h1,h2,h3,h4,h5,h6,form,img,table,fieldset,legend,header,main,footer{margin:0; padding:0;}
+ul,li,ol{list-style:none;}
+img,fieldset{border:0;} 
+img{display:block;}
+a{text-decoration:none;color:#333;}
+h1,h2,h3,h4,h5,h6{font-weight:100;}
+body{ font-family:"微软雅黑";}
+input,a{outline:none;}
+.clean:after{content: "."; display: block; clear: both; height: 0; overflow: hidden; visibility: hidden;}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100%;
-}
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  height: 100vh;
 }
 </style>

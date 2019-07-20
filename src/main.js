@@ -5,10 +5,14 @@ import "vant/lib/index.css";
 import router from "./router";
 import store from "./store";
 import { Toast } from "vant";
+import axios from 'axios';
+import qs from 'qs'
 
 Vue.config.productionTip = false;
 Vue.use(Vant);
 Vue.use(Toast);
+Vue.use(axios);
+Vue.use(qs);
 new Vue({
   router,
   store,
