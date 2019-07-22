@@ -7,6 +7,7 @@
     left-arrow 
     @click-left="onClickLeft"
     @click-right="onClickRight"
+    :fixed="true"
     />
   </div>
 </template>
@@ -21,10 +22,15 @@ export default {
     
   },
   methods: {
-    onClickLeft(){
+    onClickLeft() {
       this.$router.go(-1)
     },
-    onClickRight(){
+    onClickRight() {
+      this.$router.push("/addInfo")
+    }
+  },
+  data(){
+    return {
       
     }
   }

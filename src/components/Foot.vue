@@ -10,7 +10,6 @@
       <van-tabbar-item 
         name="addInfo" 
         icon="eye-o"
-        to="/addInfo"
         @click="toaddInfo"
         >发布</van-tabbar-item>
       <van-tabbar-item 

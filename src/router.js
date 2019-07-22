@@ -10,7 +10,12 @@ import Myself from "./views/myself/myself.vue"
 import Xq from "./views/activity/Xq.vue";
 import Bm from "./views/activity/Bm.vue";
 import Hd from "./views/activity/Hd.vue"
-
+//zpy引入的start
+import release from "./views/release/release.vue";
+import addInfo from "./views/release/addInfo.vue"
+import showInfo from "./components/showInfo.vue"
+import favoredType from "./views/release/favoredType.vue"
+//end
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -67,7 +72,32 @@ export default new Router({
       path:"/bm",
       name:"Bm",
       component:Bm
-    }
+    },
+    //zpy的路由start
+    {
+      path: "/favoredType",
+      name: "favoredType",
+      component:favoredType,
+  
+    },{
+      path: "/release",
+      name: "release",
+      component: release,
+  
+    },{
+      path: "/addInfo",
+      name: "addInfo",
+      component: addInfo,
+      children:[{
+        path:"showInfo",
+        name:"showInfo",
+        component:showInfo
+        
+        }
+      ]
+    },
+    //end
+
     
   ]
 });
