@@ -81,6 +81,7 @@ export default {
                 {
                     Toast.success('登录成功');
                     this.$store.commit('adduserID',data.data)
+                    this.$store.commit('addEmail',this.email)
                     this.$router.push({path:'/home'})
                 }
                 

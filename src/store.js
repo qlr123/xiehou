@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     userID:'', //用户id
     email:'',//用户email
+    password:'',//用户密码
     title:'', //头部标题
     leftTitle:'',//左侧按钮名
     rightTitle:'',//右侧按钮名

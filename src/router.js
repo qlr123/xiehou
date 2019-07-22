@@ -9,8 +9,8 @@ import Xg from "./components/myself/Xg.vue"
 import Myself from "./views/myself/myself.vue"
 import Xq from "./views/activity/Xq.vue";
 import Bm from "./views/activity/Bm.vue";
-import Hd from "./views/activity/Hd.vue"
-
+import Hd from "./views/activity/Hd.vue";
+import Xgmm from "./views/myself/xgmm.vue"
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -23,6 +23,11 @@ export default new Router({
           path:'/myself',
           name:'Myself',
           component:Myself
+        },
+        {
+          path:'xgmm',
+          name:'Xgmm',
+          component:Xgmm
         },
         {
           path:"/hd",
