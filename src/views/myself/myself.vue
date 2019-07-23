@@ -3,33 +3,32 @@
         <div class="top-box">
             <div class="img-box">
                 <div class="img">
-                    <img src="" alt="">
+                    <img :src="this.$store.state.values.headportrait" alt="">
                 </div>
             </div>
             <p>邮箱名:<span>{{email}}</span></p>
         </div>
         <div class="msg-box">
-            <div>
+            <div @click="wdxx">
                 <p>12</p>
                 <span>我的消息</span>
             </div>
-            <div>
+            <div @click="wdyf">
                 <p>12</p>
                 <span>我的缘分</span>
             </div>
-            <div>
+            <div @click="wdhd">
                 <p>12</p>
                 <span>我的活动</span>
             </div>
         </div>
         <div class="list-box">
             <li class="fw">我的服务</li>
-            <li @click="torelease"><van-icon name="description" /><span>编辑资料</span></li>
-            <li><van-icon name="like-o" /><span>我的关注</span></li>
+            <li @click="toxxzs"><van-icon name="description" /><span>编辑资料</span></li>
+            <li @click="wdgz"><van-icon name="like-o"/><span>我的关注</span></li>
             <li @click="todongtai"><van-icon name="eye-o" /><span>我的动态</span></li>
-            <li><van-icon name="photo-o" /><span>我的相册</span></li>
             <li @click="toXgmm"><van-icon name="edit" /><span>修改密码</span></li>
-            <div class="exit">退出登录</div>
+            <div class="exit" @click="exit">退出登录</div>
         </div>
     </div>
 </template>
@@ -45,14 +44,30 @@ export default {
         }
     },
     methods:{
-        torelease(){
-            this.$router.push({path:'/release'})
+        toxxzs(){    
+            this.$router.push({path:'/xxzs'})     
         },
         toXgmm(){
             this.$router.push({path:'/Xgmm'})
         },
         todongtai(){
             this.$router.push({path:'/dongtai'})
+        },
+        wdxx(){
+            this.$router.push({path:'/wdxx'})
+        },
+        wdyf(){
+            this.$router.push({path:'/wdyf'})
+        },
+        wdhd(){
+            this.$router.push({path:'/wdhd'})
+        },
+        wdgz(){
+            this.$router.push({path:'/wdgz'})
+        },
+        exit(){
+            this.$router.push({path:'/home'})
+            location.reload()
         }
     },
     beforeCreate(){
@@ -65,11 +80,18 @@ export default {
         this.$store.commit('righttitle','')//定义导航右侧按钮名字，没功能可以为空
         this.$store.commit('changeTitle','个人中心')//定义导航中间名字
         this.$store.commit('footercheck','myself')//底部按钮锁定，名字为路由跳转名字
+        axios({
+                method:'post',
+                url:'http://10.8.157.63:8080/user/showUserById',
+                data:qs.stringify({id:this.$store.state.userID}),
+            }).then((data)=>{
+                console.log(data)
+                this.$store.commit('addmsg',data.data)
+            })
     },
     beforeMount(){
         var h= document.body.clientHeight-98;
         this.height = h+'px'
-        console.log(this.email)
     }
 }
 </script>

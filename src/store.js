@@ -11,10 +11,18 @@ export default new Vuex.Store({
     title:'', //头部标题
     leftTitle:'',//左侧按钮名
     rightTitle:'',//右侧按钮名
-    fcheck:'' //底部导航点击绑定的
-
+    fcheck:'' ,//底部导航点击绑定的
+    values:'',//存放个人所有信息
+    //zpy的state数据start
+    selfInfo:null,// 发布自己的信息
+    favoredType:null,//发布心意对象的信息
+    //end
   },
   mutations: {
+    addmsg(state,value)//添加所有个人信息
+    {
+      state.values = value
+    },
     adduserID(state,value)//修改id
     {
       state.userID=value
