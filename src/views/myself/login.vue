@@ -26,7 +26,7 @@
       <router-link to="/register">立即注册</router-link>
       <span>|</span>
       <router-link to="/forgetpwd">忘记密码?</router-link>
-      <router-link to="/home" class="bc">返回主页</router-link>
+      <router-link to="/" class="bc">返回主页</router-link>
     </div>
   </div>
 </template>

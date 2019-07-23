@@ -11,7 +11,6 @@
                 <div class="monologue">自我描述:<span>{{item.monologue}}</span></div>
                 <div class="income">年收入:<span>{{item.income}}</span></div>
                 <div class="house">有无房产:<span>{{item.house}}</span></div>
-                <div class="addgz" v-on:click="addgzs" :id="item.id">添加关注</div>
             </div>
         </van-tab>    
         <van-tab title="我关注的">

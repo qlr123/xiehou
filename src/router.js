@@ -80,11 +80,6 @@ export default new Router({
           component:wdgz
         },
         {
-          path:"/hd",
-          name:"Hd",
-          component:Hd
-        },
-        {
           path: "/",
           redirect: "/shouye"
         }
@@ -170,11 +165,6 @@ export default new Router({
       path: "/detail",
       name: "detail",
       component: () => import("./views/home/detail.vue")
-    },
-    {
-      path: "/login",
-      name: "Login",
-      component: Login
     }
   ]
 });

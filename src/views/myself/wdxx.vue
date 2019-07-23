@@ -10,7 +10,7 @@
                             <span class="user">螺旋霹雳爆炸</span>
                             <span class="to">给你</span>
                             <span class="do">说</span>
-                            <span class="content">你妈死了草你妈的煞笔玩意日你妈狗东西尼玛死了！</span>
+                            <span class="content">太阳当空照花儿对我笑</span>
                             <span class="date">2019-7-23</span>
                         </li>
                             
