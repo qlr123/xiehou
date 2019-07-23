@@ -66,15 +66,15 @@ export default {
             this.$router.push({path:'/wdgz'})
         },
         exit(){
-            this.$router.push({path:'/home'})
+            this.$router.push({path:'/'})
             location.reload()
         }
     },
     beforeCreate(){
         if(this.$store.state.email=='')
         {
-            // Toast.fail('你还尚未登录，请登录！');
-            // this.$router.push({path:'/login'})
+            Toast.fail('你还尚未登录，请登录！');
+            this.$router.push({path:'/login'})
         }
         this.$store.commit('lefttitle','返回')//定义导航左侧名字
         this.$store.commit('righttitle','')//定义导航右侧按钮名字，没功能可以为空

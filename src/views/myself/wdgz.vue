@@ -11,6 +11,7 @@
                 <div class="monologue">自我描述:<span>{{item.monologue}}</span></div>
                 <div class="income">年收入:<span>{{item.income}}</span></div>
                 <div class="house">有无房产:<span>{{item.house}}</span></div>
+                <div class="addgz" v-on:click="addgzs" :id="item.id">添加关注</div>
             </div>
         </van-tab>    
         <van-tab title="我关注的">
@@ -44,8 +45,8 @@ export default {
     },
     methods:{
         addgzs(data){
-            console.log(data.target.innerText);
             let odata = data;
+            console.log(data.srcElement.id)
             axios({
                 method:'post',
                 url:'http://10.8.157.63:8080/user/saveOrUpdateAttention',
@@ -65,7 +66,6 @@ export default {
                         Toast.success('取关成功!');
                         console.log(odata)
                         odata.target.innerText = "添加关注"
-                    break;
                 }
             })
         }
