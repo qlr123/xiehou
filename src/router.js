@@ -28,11 +28,21 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home,
-      children:[
+      children: [
         {
-          path:'/myself',
-          name:'Myself',
-          component:Myself
+          path: "/myself",
+          name: "Myself",
+          component: Myself
+        },
+        {
+          path: "/hd",
+          name: "Hd",
+          component: Hd
+        },
+        {
+          path: "shouye",
+          name: "shouye",
+          component: () => import("./views/home/shouye.vue")
         },
         {
           path:'/xxzs',
@@ -73,71 +83,98 @@ export default new Router({
           path:"/hd",
           name:"Hd",
           component:Hd
-        }
-      ]
-    },
-    {
-      path:'/login',
-      name:'Login',
-      component:Login
-    },
-    {
-      path:'/register',
-      name:'Register',
-      component:Register
-    },
-    {
-      path:'/forgetpwd',
-      redirect:'/yz',
-      component:Forgetpwd,
-      children:[
-        {
-          path:'/yz',
-          name:'Yz',
-          component:Yz
         },
         {
-          path:'/xg',
-          name:'Xg',
-          component:Xg
+          path: "/",
+          redirect: "/shouye"
         }
       ]
     },
     {
-      path:"/xq",
-      name:"Xq",
-      component:Xq
+      path: "/login",
+      name: "Login",
+      component: Login
     },
     {
-      path:"/bm",
-      name:"Bm",
-      component:Bm
+      path: "/register",
+      name: "Register",
+      component: Register
+    },
+    {
+      path: "/forgetpwd",
+      redirect: "/yz",
+      component: Forgetpwd,
+      children: [
+        {
+          path: "/yz",
+          name: "Yz",
+          component: Yz
+        },
+        {
+          path: "/xg",
+          name: "Xg",
+          component: Xg
+        }
+      ]
+    },
+    {
+      path: "/xq",
+      name: "Xq",
+      component: Xq
+    },
+    {
+      path: "/bm",
+      name: "Bm",
+      component: Bm
     },
     //zpy的路由start
     {
       path: "/favoredType",
       name: "favoredType",
-      component:favoredType,
-  
-    },{
+      component: favoredType
+    },
+    {
       path: "/release",
       name: "release",
-      component: release,
-  
-    },{
+      component: release
+    },
+    {
       path: "/addInfo",
       name: "addInfo",
       component: addInfo,
-      children:[{
-        path:"showInfo",
-        name:"showInfo",
-        component:showInfo
-        
+      children: [
+        {
+          path: "showInfo",
+          name: "showInfo",
+          component: showInfo
         }
       ]
     },
     //end
-
-    
+    {
+      path: "/shaixuan",
+      name: "shaixuan",
+      component: () => import("./views/home/filter.vue")
+    },
+    {
+      path: "/dongtai",
+      name: "dongtai",
+      component: () => import("./views/home/dongtai.vue")
+    },
+    {
+      path: "/myaction",
+      name: "myaction",
+      component: () => import("./views/home/myaction.vue")
+    },
+    {
+      path: "/detail",
+      name: "detail",
+      component: () => import("./views/home/detail.vue")
+    },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login
+    }
   ]
 });

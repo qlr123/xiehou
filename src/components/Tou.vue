@@ -1,13 +1,13 @@
 <template>
   <div id="header-box">
-    <van-nav-bar 
-    :title="this.$store.state.title" 
-    :left-text="this.$store.state.leftTitle" 
-    :right-text="this.$store.state.rightTitle" 
-    left-arrow 
-    @click-left="onClickLeft"
-    @click-right="onClickRight"
-    :fixed="true"
+    <van-nav-bar
+      :fixed="true"
+      :title="this.$store.state.title"
+      :left-text="this.$store.state.leftTitle"
+      :right-text="this.$store.state.rightTitle"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
     />
   </div>
 </template>
@@ -15,24 +15,19 @@
 <script>
 export default {
   name: "tou",
-  data(){
-    return{
-
-    }
-    
+  data() {
+    return {};
   },
   methods: {
     onClickLeft() {
-      this.$router.go(-1)
+      this.$router.go(-1);
     },
     onClickRight() {
-      this.$router.push("/addInfo")
+      this.$router.push("/addInfo");
     }
   },
-  data(){
-    return {
-      
-    }
+  data() {
+    return {};
   }
 };
 </script>
@@ -40,26 +35,22 @@ export default {
 #header-box{
   height: 48px;
 }
-#header-box .van-nav-bar
-{
+#header-box .van-nav-bar {
   background: #fa6481;
   height: 48px;
   display: flex;
 }
-#header-box .van-nav-bar .van-icon
-{
-  color: #fff
-}
-#header-box .van-nav-bar__text
-{
+#header-box .van-nav-bar .van-icon {
   color: #fff;
-  line-height: 48px
 }
-#header-box .van-nav-bar__title
-{
-  color:	#fff;
+#header-box .van-nav-bar__text {
+  color: #fff;
+  line-height: 48px;
+}
+#header-box .van-nav-bar__title {
+  color: #fff;
   letter-spacing: 2px;
-  font-size: 15px
+  font-size: 15px;
 }
 </style>
 
