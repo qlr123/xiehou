@@ -192,7 +192,7 @@
 </template>
 <script>
 import heads from "../../components/Tou";
-import list from "../../../dist/js/list";
+import list from "../../../public/js/list";
 import axios from "axios";
 export default {
   data() {

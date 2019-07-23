@@ -89,7 +89,7 @@
   </div>
 </template>
 <script>
-import list from "../../../dist/js/list";
+import list from "../../../public/js/list";
 import heads from "../../components/Tou";
 export default {
   components: {
