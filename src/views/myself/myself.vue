@@ -65,37 +65,33 @@ export default {
     toXgmm() {
       this.$router.push({ path: "/Xgmm" });
     },
-<<<<<<< HEAD
-    todongtai() {
-      this.$router.push({ path: "/myaction" });
-=======
-    methods:{
-        toxxzs(){    
-            this.$router.push({path:'/xxzs'})     
-        },
-        toXgmm(){
-            this.$router.push({path:'/Xgmm'})
-        },
-        todongtai(){
-            this.$router.push({path:'/myaction'})
-        },
-        wdxx(){
-            this.$router.push({path:'/wdxx'})
-        },
-        wdyf(){
-            this.$router.push({path:'/wdyf'})
-        },
-        wdhd(){
-            this.$router.push({path:'/wdhd'})
-        },
-        wdgz(){
-            this.$router.push({path:'/wdgz'})
-        },
-        exit(){
-            this.$router.push({path:'/'})
-            location.reload()
-        }
->>>>>>> 86e69704cf159ab881106102081402e361f3859d
+
+    methods: {
+      toxxzs() {
+        this.$router.push({ path: "/xxzs" });
+      },
+      toXgmm() {
+        this.$router.push({ path: "/Xgmm" });
+      },
+      todongtai() {
+        this.$router.push({ path: "/myaction" });
+      },
+      wdxx() {
+        this.$router.push({ path: "/wdxx" });
+      },
+      wdyf() {
+        this.$router.push({ path: "/wdyf" });
+      },
+      wdhd() {
+        this.$router.push({ path: "/wdhd" });
+      },
+      wdgz() {
+        this.$router.push({ path: "/wdgz" });
+      },
+      exit() {
+        this.$router.push({ path: "/" });
+        location.reload();
+      }
     },
     wdxx() {
       this.$router.push({ path: "/wdxx" });
@@ -140,7 +136,6 @@ export default {
 };
 </script>
 <style scoped>
-<<<<<<< HEAD
 #myself-box {
   display: flex;
   flex-direction: column;
@@ -206,76 +201,6 @@ export default {
   content: "";
   position: absolute;
   left: 30%;
-=======
-#myself-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-.top-box{
-    background: linear-gradient(to bottom,#fa6481, #ffa4d0);
-    height: 160px;
-    overflow: hidden;
-}
-.img-box{
-    width: 120px;
-    height: 120px;
-    background: rgba(0, 0, 0, 0.01);
-    margin: 0 auto;
-    margin-top: 5px;
-    border-radius: 60px;
-}
-.img{
-    width: 100px;
-    height: 100px;
-    background: rgba(0, 0, 0, 0.02);
-    margin: 0 auto;
-    border-radius: 50px;
-    transform: translateY(10px)
-}
-.img img{
-    width: 80px;
-    height: 80px;
-    border-radius: 40px;
-    margin: 0 auto;
-    transform: translateY(10px)
-}
-.top-box>p{
-    margin-top: 10px
-}
-.msg-box
-{
-    height: 60px;
-    background: #ffa4d0;
-    display: flex;
-    justify-content: space-around;
-}
-.msg-box div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.msg-box div:nth-of-type(2)::before{
-    width: 2px ;
-    height: 30px;
-    box-shadow: 0 0px 3px #fff inset;
-    background: rgba(0, 0, 0, 0);
-    content: '';
-    position: absolute;
-    right: 30%
-    ;
-}
-.msg-box div:nth-of-type(2)::after{
-    width: 2px ;
-    height: 30px;
-    box-shadow: 0 0px 3px #fff inset;
-    background: rgba(0, 0, 0, 0);
-    content: '';
-    position: absolute;
-    left: 30%
-    ;
->>>>>>> 86e69704cf159ab881106102081402e361f3859d
 }
 
 .msg-box div p {
