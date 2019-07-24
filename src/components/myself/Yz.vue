@@ -153,10 +153,6 @@ export default {
     margin-bottom: 20px;
     width: 100%
 }
-
-#yz-box /deep/ input{
-    color: #fff !important
-}
 #yz-box /deep/ .van-field__control::placeholder{
     color: rgba(51,51,51,0.4) !important
 }
@@ -208,9 +204,7 @@ export default {
 #yz-box .regbtn {
     margin-bottom: 20px;
 }
-#yz-box /deep/ input{
-    color: #fff !important
-}
+
 #yz-box /deep/ .van-field__control::placeholder{
     color: rgba(51,51,51,0.4) !important
 }

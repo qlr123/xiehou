@@ -51,7 +51,7 @@ export default {
             this.$router.push({path:'/Xgmm'})
         },
         todongtai(){
-            this.$router.push({path:'/dongtai'})
+            this.$router.push({path:'/myaction'})
         },
         wdxx(){
             this.$router.push({path:'/wdxx'})

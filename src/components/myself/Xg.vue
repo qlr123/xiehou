@@ -148,9 +148,7 @@ export default {
 #xg-box .regbtn {
     margin-bottom: 20px;
 }
-#xg-box /deep/ input{
-    color: #fff !important
-}
+
 #xg-box /deep/ .van-field__control::placeholder{
     color: rgba(51,51,51,0.4) !important
 }

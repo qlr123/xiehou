@@ -167,9 +167,7 @@ export default {
   color: #fff;
   padding: 0 5px;
 }
-#login-box .van-cell[data-v-154855ac] /deep/ input {
-  color: #fff !important;
-}
+
 #login-box /deep/ .van-field__control::placeholder {
   color: rgba(51, 51, 51, 0.4) !important;
 }

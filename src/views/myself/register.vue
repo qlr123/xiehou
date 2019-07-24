@@ -222,9 +222,7 @@ letter-spacing: -3px
     color: #fff;
     padding: 0 5px
 }
-#register-box /deep/ input{
-    color: #fff !important
-}
+
 #register-box /deep/ .van-field__control::placeholder{
     color: rgba(51,51,51,0.4) !important
 }
