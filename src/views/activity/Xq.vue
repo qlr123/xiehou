@@ -35,7 +35,7 @@
 <van-field
   style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
     v-model="value1"
-    required
+   disabled
     label="活动时间"
     
     placeholder="请输入用户名"
@@ -43,8 +43,7 @@
   />
   <van-field
     v-model="value2"
-    required
-    clearable
+    disabled
     label="地点"
   style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
     placeholder="地点"
@@ -52,8 +51,7 @@
   />
   <van-field
     v-model="value3"
-    required
-    clearable
+    disabled
     label="主办单位"
     style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
     placeholder="主办单位"
@@ -61,24 +59,21 @@
   />
   <van-field
     v-model="value4"
-    required
-    clearable
+    disabled
     label="人数" 
     placeholder=""
     style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
   />
    <van-field
     v-model="value5"
-    required
-    clearable
+    disabled
     label="报名须知" 
     placeholder=""
     style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
   />
    <van-field
     v-model="value6"
-    required
-    clearable
+   disabled
     label="活动费用" 
     placeholder=""
     style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
@@ -108,7 +103,7 @@ export default {
         return{
           active:0,
             username:"",
-            value:"",
+            value:"11111",
             num:"",
             show:false,
             show1:false,

@@ -11,93 +11,100 @@
     <van-cell-group>
   <van-field
     v-model="name"
-    required
-    clearable
+   disabled
     label="姓名"
     right-icon="question-o"
     placeholder="姓名"
+    style="height:50px;line-heght:50px"
   />
    <van-field
     v-model="sex"
-    required
-    clearable
+    disabled
     label="性别"
+     style="height:50px;line-heght:50px"
     right-icon="question-o"
     placeholder="male"
   />
   <van-field
 
     v-model="age"
-    required
-    clearable
+  disabled
     label="年龄"
     right-icon="question-o"
     placeholder="male"
+     style="height:50px;line-heght:50px"
   />
   <van-field
     v-model="phone"
     label="手机号"
     placeholder="请输入手机号"
+    disabled
+     style="height:50px;line-heght:50px"
   />
 </van-cell-group>
   </van-col>
   <van-col span="12">
-<van-uploader :before-read="beforeRead" >
-  <van-button  style="width:120px;height:126px">上传图片</van-button>
-</van-uploader>
+<van-image
+        style="border:1px solid gray"
+        width="180"
+        height="200"
+        :src="src"
+        to="/xq.vue"
+       
+      />
   </van-col>
 </van-row>
 <van-cell-group style="margin-top:10px">
  <van-field
     v-model="hk"
-    required
-    clearable
+    disabled
     label="婚况"
     right-icon="question-o"
     placeholder=""
+     style="height:50px;line-heght:50px"
   />
  <van-field
     v-model="adress"
-    required
-    clearable
+   disabled
     label="工作地"
     right-icon="question-o"
     placeholder=""
+     style="height:50px;line-heght:50px"
   />
    <van-field
     v-model="work"
-    required
-    clearable
+   disabled
     label="职业"
     right-icon="question-o"
     placeholder=""
+     style="height:50px;line-heght:50px"
   />
    <van-field
     v-model="lent"
-    required
-    clearable
+    disabled
     label="身高"
     right-icon="question-o"
     placeholder=""
+     style="height:50px;line-heght:50px"
   />
    <van-field
     v-model="weight"
-    required
-    clearable
+    disabled
     label="体重"
     right-icon="question-o"
     placeholder=""
+     style="height:50px;line-heght:50px"
   />
    <van-field
     v-model="money"
-    required
-    clearable
+    disabled
     label="年收入"
     right-icon="question-o"
     placeholder=""
+     style="height:50px;line-heght:50px"
   />
 <van-tabbar v-model="active">
-  <van-button type="info" style="margin:0 auto">我要报名</van-button>
+  <van-button type="info" style="margin:0 auto" to="/xq">我要报名</van-button>
 </van-tabbar>
   </van-cell-group>
     </div>
@@ -120,18 +127,29 @@ export default {
         adress:"八大胡同",
         lent:"三四米",
         weight:"50斤",
-        work:"banzhuan"
+        work:"banzhuan",
+        src:""
       }
     },
     mounted(){
-      let _this = this
       axios({
         method:"post",
-        url:"http://10.8.157.63:8080/user/showAllHotlist",
-        
+        url:"http://10.8.157.63:8080/user/showUserById",
+        params:{id:localStorage.getItem("userId")}
       }).then((data)=>{
-        _this.data = data.data
-        console.log(_this.data)
+        data = data.data
+         console.log(data)
+         this.name=data.username
+        this.phone=data.phone
+         this.sex=data.sex
+         this.age=data.age
+         this.hk=data.marry
+        this.money=data.income
+        this.adress=data.address
+         this.lent=data.heights
+        this.weight=data.weights
+         this.work=data.job
+         this.src=data.headportrait
       })
     },
 
