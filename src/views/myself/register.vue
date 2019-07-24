@@ -133,7 +133,6 @@ export default {
                     Toast.success('注册成功！请登录');
                     this.$router.push({path:'/login'})
                 }
-    
             }).catch((data)=>{
                 console.log(data)
             })
