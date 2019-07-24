@@ -115,7 +115,7 @@ export default {
     width: 90px;
     height: 90px;
     display: inline-block;
-    float: left;
+    float:left;
 }
 .name{
     font-size: 14px;
