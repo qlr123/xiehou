@@ -152,7 +152,7 @@ export default {
     background: rgba(0, 0, 0, 0);
     content: '';
     position: absolute;
-    margin-right: 30%
+    right: 30%
     ;
 }
 .msg-box div:nth-of-type(2)::after{
@@ -162,7 +162,7 @@ export default {
     background: rgba(0, 0, 0, 0);
     content: '';
     position: absolute;
-    margin-left: 30%
+    left: 30%
     ;
 }
 
