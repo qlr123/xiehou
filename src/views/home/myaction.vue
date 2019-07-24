@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { Toast } from "vant";
 import axios from "axios";
 export default {
   name: "myaction",
@@ -51,17 +52,22 @@ export default {
       userlist: ""
     };
   },
-  mounted() {
+  created() {
     //获取动态
-    axios({
-      method: "post",
-      url: "http://10.8.157.63:8080/user/showDynamicById",
-      params: { id: 1 }
-    }).then(res => {
-      //   console.log(res.data);
-      this.userlist = res.data;
-      //   console.log(res.data[0].headportrait);
-    });
+    var userId = localStorage.getItem("userId");
+    if (userId) {
+      axios({
+        method: "post",
+        url: "http://10.8.157.63:8080/user/showDynamicById",
+        params: { id: userId }
+      }).then(res => {
+        //   console.log(res.data);
+        this.userlist = res.data;
+        //   console.log(res.data[0].headportrait);
+      });
+    } else {
+      Toast.fail("请先登录");
+    }
   },
   methods: {
     onClickLeft() {

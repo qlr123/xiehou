@@ -17,6 +17,7 @@
     </div>
     <div class="fabu">
       <van-nav-bar
+        z-index:1
         left-text="附近动态"
         right-text="发布动态+"
         @click-left="onClickLeft"
@@ -149,9 +150,6 @@ p,
 div {
   margin: 0;
   padding: 0;
-}
-.main {
-  margin-top: 46px;
 }
 
 .cir {

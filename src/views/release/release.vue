@@ -326,10 +326,10 @@ export default {
   components: {
     heads
   },
-  beforeCreate(){
-    this.$store.commit('lefttitle','返回')//定义导航左侧名字
-    this.$store.commit('righttitle','重新编写')//定义导航右侧按钮名字，没功能可以为空
-    this.$store.commit('changeTitle','编写个人信息')//定义导航中间名字
+  beforeCreate() {
+    this.$store.commit("lefttitle", "返回"); //定义导航左侧名字
+    this.$store.commit("righttitle", "重新编写"); //定义导航右侧按钮名字，没功能可以为空
+    this.$store.commit("changeTitle", "编写个人信息"); //定义导航中间名字
   },
   mounted() {},
   watch: {
@@ -376,16 +376,16 @@ export default {
     afterRead(file) {
       // 此时可以自行将文件上传至服务器
       console.log(file);
-    //   this.headerImg = file.content;
-    //   let fordata = new FormData();
-    //   fordata.append("avatarfile", file.file);
-    //   this.imgdata = fordata;
-    //   console.log(fordata.get("avatarfile"));
-        this.imgdata = file.file
+      //   this.headerImg = file.content;
+      //   let fordata = new FormData();
+      //   fordata.append("avatarfile", file.file);
+      //   this.imgdata = fordata;
+      //   console.log(fordata.get("avatarfile"));
+      this.imgdata = file.file;
     },
-    deleteimg(file){
-        this.imgdata = "";
-        console.log(this.imgdata)
+    deleteimg(file) {
+      this.imgdata = "";
+      console.log(this.imgdata);
     },
 
     sendimgs() {
@@ -408,11 +408,11 @@ export default {
         hobbies: this.hobbies,
         monologue: this.monologue,
         characters: this.characters,
-        uploadFile:this.imgdata,
-        id:17
+        uploadFile: this.imgdata,
+        id: 17
       };
-        let fordata = new FormData();
-       
+      let fordata = new FormData();
+
       console.log(fordata.get("uploadFile"));
       let tipinfo = "";
       for (let key in objinfo) {
@@ -473,9 +473,9 @@ export default {
           return (mark = false);
         }
       }
-       for(let key in objinfo) {
-            fordata.append(key,objinfo[key]);
-        }
+      for (let key in objinfo) {
+        fordata.append(key, objinfo[key]);
+      }
 
       if (
         mark &&
@@ -485,21 +485,22 @@ export default {
         this.agebool
       ) {
         console.log(fordata);
-        this.$store.state.selfInfo = objinfo
-        console.log(this.$store.state.selfInfo)
-            axios({
-              url: "http://10.8.157.63:8080/user/updateUserInfo",
-              method:"post",
-              data:fordata,
-              headers:{
-                  'Content-Type':'multipart/form-data'
-              }
-           }).then(function(data){
-               console.log(data)
-           }).catch(function(err){
-               console.log(err)
-           })
-
+        this.$store.state.selfInfo = objinfo;
+        console.log(this.$store.state.selfInfo);
+        axios({
+          url: "http://10.8.157.63:8080/user/updateUserInfo",
+          method: "post",
+          data: fordata,
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then(function(data) {
+            console.log(data);
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
       } else {
         this.$toast("请按照规则填写");
       }
@@ -629,7 +630,7 @@ export default {
 }
 #mid {
   margin-top: 46px;
-  text-align: left !important
+  text-align: left !important;
 }
 #but {
   margin: 30px 0;

@@ -5,34 +5,50 @@
       <van-row type="flex">
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">年龄</van-col>
         <van-col span="8">
-          <van-field v-model="minAge" placeholder="最小值" type="number" right-icon="question-o"
-            :error-message="minAgeerr" 
+          <van-field
+            v-model="minAge"
+            placeholder="最小值"
+            type="number"
+            right-icon="question-o"
+            :error-message="minAgeerr"
             @click-right-icon="$toast('最小年龄大18岁')"
           />
         </van-col>
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">至</van-col>
         <van-col span="8">
-          <van-field v-model="maxAge" placeholder="最大值" type="number" right-icon="question-o"
-          @click-right-icon="$toast('最大年龄需要大于最小年龄且小于100岁')" 
-           :error-message="maxAgeerr"
-        />
+          <van-field
+            v-model="maxAge"
+            placeholder="最大值"
+            type="number"
+            right-icon="question-o"
+            @click-right-icon="$toast('最大年龄需要大于最小年龄且小于100岁')"
+            :error-message="maxAgeerr"
+          />
         </van-col>
       </van-row>
-
 
       <van-row type="flex">
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">身高</van-col>
         <van-col span="8">
-          <van-field v-model="minHeight" placeholder="最小值" type="number" right-icon="question-o"
-          @click-right-icon="$toast('身高的最小值为100cm')" 
-          :error-message="minHeighterr"
+          <van-field
+            v-model="minHeight"
+            placeholder="最小值"
+            type="number"
+            right-icon="question-o"
+            @click-right-icon="$toast('身高的最小值为100cm')"
+            :error-message="minHeighterr"
           />
         </van-col>
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">至</van-col>
         <van-col span="8">
-          <van-field v-model="maxHeight" placeholder="最大值" type="number" right-icon="question-o"
-          :error-message="maxHeighterr"
-          @click-right-icon="$toast('最大身高需要大于最小身高且小于300cm')" />
+          <van-field
+            v-model="maxHeight"
+            placeholder="最大值"
+            type="number"
+            right-icon="question-o"
+            :error-message="maxHeighterr"
+            @click-right-icon="$toast('最大身高需要大于最小身高且小于300cm')"
+          />
         </van-col>
       </van-row>
 
@@ -46,7 +62,7 @@
         />
       </van-popup>
 
-    <van-field v-model="income" label="年收入" readonly @click="incomeShows"  placeholder="请填写您的年收入" />
+      <van-field v-model="income" label="年收入" readonly @click="incomeShows" placeholder="请填写您的年收入" />
       <van-popup v-model="incomeShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -56,7 +72,13 @@
         />
       </van-popup>
 
-      <van-field v-model="eduinfo" label="学历" @click="eduinfoShows" readonly placeholder="请选择写您期望的学历" />
+      <van-field
+        v-model="eduinfo"
+        label="学历"
+        @click="eduinfoShows"
+        readonly
+        placeholder="请选择写您期望的学历"
+      />
       <van-popup v-model="eduinfoShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -66,7 +88,13 @@
         />
       </van-popup>
 
-      <van-field v-model="address" label="地址" @click="addressShows" readonly placeholder="请选择你的所在地" />
+      <van-field
+        v-model="address"
+        label="地址"
+        @click="addressShows"
+        readonly
+        placeholder="请选择你的所在地"
+      />
       <van-popup v-model="addressShow" style="width:100%" position="bottom">
         <van-area :area-list="areaList" @cancel="addressCancel" @confirm="addressConfirm" />
       </van-popup>
@@ -123,119 +151,128 @@ export default {
       maxAge: "",
       minHeight: "",
       maxHeight: "",
-      minAgeerr:"",
-      maxAgeerr:"",
-      minHeighterr:"",
-      maxHeighterr:"",
-      minAgeboll:true,
-      maxAgeboll:true,
-      minHeightbool:true,
-      maxHeightbool:true,
+      minAgeerr: "",
+      maxAgeerr: "",
+      minHeighterr: "",
+      maxHeighterr: "",
+      minAgeboll: true,
+      maxAgeboll: true,
+      minHeightbool: true,
+      maxHeightbool: true
     };
   },
-  watch:{
-      minAge:function(newinfo){
-          if(newinfo>=18&&newinfo<=100){
-            this.minAgeerr = "";
-            this.minAgeboll = true;
-          }else {
-            this.minAgeerr = "年龄不合理"
-            this.minAgeboll = false;
-          }
-      },
-      maxAge:function(newinfo){
-          if(this.minAge==""){
-            this.maxAgeerr = "请先填写最小值";
-            this.maxAgeboll = false;
-          }else {
-              if(newinfo>this.minAge&&newinfo<100){
-                  this.maxAgeerr = "";
-                  this.maxAgeboll = true;
-              }else{
-                  this.maxAgeerr = "身高不合理"
-                  this.maxAgeboll = false;
-              }
-          }
-      },
-       minHeight:function(newinfo){
-          if(newinfo>=100&&newinfo<=300){
-            this.minHeighterr = ""
-            this.minHeightbool = true;
-          }else {
-            this.minHeighterr = "最小身高不合理";
-            this.minHeightbool = false;
-          }
-      },
-      maxHeight:function(newinfo){
-          if(this.minHeight==""){
-            this.maxHeighterr = "请先填写最小值";
-            this.maxHeightbool = false;
-          }else {
-              if(newinfo>this.minHeight&&newinfo<300){
-                  this.maxHeighterr = "" 
-                  this.maxHeightbool = true;
-              }else{
-                  this.maxHeighterr = "请按照规则填写"
-                  this.maxHeightbool = false;
-              }
+  watch: {
+    minAge: function(newinfo) {
+      if (newinfo >= 18 && newinfo <= 100) {
+        this.minAgeerr = "";
+        this.minAgeboll = true;
+      } else {
+        this.minAgeerr = "年龄不合理";
+        this.minAgeboll = false;
+      }
+    },
+    maxAge: function(newinfo) {
+      if (this.minAge == "") {
+        this.maxAgeerr = "请先填写最小值";
+        this.maxAgeboll = false;
+      } else {
+        if (newinfo > this.minAge && newinfo < 100) {
+          this.maxAgeerr = "";
+          this.maxAgeboll = true;
+        } else {
+          this.maxAgeerr = "身高不合理";
+          this.maxAgeboll = false;
         }
-      
-      
-  }
+      }
+    },
+    minHeight: function(newinfo) {
+      if (newinfo >= 100 && newinfo <= 300) {
+        this.minHeighterr = "";
+        this.minHeightbool = true;
+      } else {
+        this.minHeighterr = "最小身高不合理";
+        this.minHeightbool = false;
+      }
+    },
+    maxHeight: function(newinfo) {
+      if (this.minHeight == "") {
+        this.maxHeighterr = "请先填写最小值";
+        this.maxHeightbool = false;
+      } else {
+        if (newinfo > this.minHeight && newinfo < 300) {
+          this.maxHeighterr = "";
+          this.maxHeightbool = true;
+        } else {
+          this.maxHeighterr = "请按照规则填写";
+          this.maxHeightbool = false;
+        }
+      }
+    }
   },
 
-  
   methods: {
     upload() {
-      let mark = true; 
+      let mark = true;
       let tipinfo = "";
-      let obj = {minAge:this.minAge,
-                maxAge:this.maxAge,minHeight:this.minHeight,
-                maxHeight:this.maxHeight ,marry: this.marry,income:this.income,
-                eduinfo:this.eduinfo,address:this.address,
-                hobbies:this.hobbies };
-                console.log(obj);
-                
-                for (const key in obj) {
-                    if (obj[key] == "") {
-                         switch (key) {
-                            case "marry":
-                                tipinfo = "请选择您期望婚姻状况";
-                                break;
-                            case "income":
-                                tipinfo = "请选择您期望的年薪";
-                                break;
-                            case "eduinfo":
-                                tipinfo = "请选择您期望的教育经历";
-                                break;
-                            case "address":
-                                tipinfo = "请选择您期望的位置";
-                                break;
-                            case "hobbies":
-                                tipinfo = "请您简要描述期望的性格";
-                                break;
-                            case "minAge":
-                                tipinfo = "请您填写最小年龄";
-                                break;
-                            case "maxAge":
-                                tipinfo = "请选择您期望的最大年龄";
-                                break;
-                            case "minHeight":
-                                tipinfo = "请选择您期望的最小身高";
-                                break;
-                            case "maxHeight":
-                                tipinfo = "请选择您期望的最大身高";
-                                break;
-                         }
-                        this.$toast(tipinfo);
-                        return (mark = false);
-                    }
-                }
-                if(mark&&this.maxHeightbool&&this.minHeightbool&&this.minAgeboll&&this.maxAgeboll){
-                    this.$store.state.favoredType = obj
-                }else {
-                     this.$toast("请按照规则填写");
-                }
+      let obj = {
+        minAge: this.minAge,
+        maxAge: this.maxAge,
+        minHeight: this.minHeight,
+        maxHeight: this.maxHeight,
+        marry: this.marry,
+        income: this.income,
+        eduinfo: this.eduinfo,
+        address: this.address,
+        hobbies: this.hobbies
+      };
+      console.log(obj);
+
+      for (const key in obj) {
+        if (obj[key] == "") {
+          switch (key) {
+            case "marry":
+              tipinfo = "请选择您期望婚姻状况";
+              break;
+            case "income":
+              tipinfo = "请选择您期望的年薪";
+              break;
+            case "eduinfo":
+              tipinfo = "请选择您期望的教育经历";
+              break;
+            case "address":
+              tipinfo = "请选择您期望的位置";
+              break;
+            case "hobbies":
+              tipinfo = "请您简要描述期望的性格";
+              break;
+            case "minAge":
+              tipinfo = "请您填写最小年龄";
+              break;
+            case "maxAge":
+              tipinfo = "请选择您期望的最大年龄";
+              break;
+            case "minHeight":
+              tipinfo = "请选择您期望的最小身高";
+              break;
+            case "maxHeight":
+              tipinfo = "请选择您期望的最大身高";
+              break;
+          }
+          this.$toast(tipinfo);
+          return (mark = false);
+        }
+      }
+      if (
+        mark &&
+        this.maxHeightbool &&
+        this.minHeightbool &&
+        this.minAgeboll &&
+        this.maxAgeboll
+      ) {
+        this.$store.state.favoredType = obj;
+      } else {
+        this.$toast("请按照规则填写");
+      }
     },
     marryShows() {
       this.marryShow = true;
@@ -282,7 +319,7 @@ export default {
     },
     incomeCancel() {
       this.incomeShow = false;
-    },
+    }
   }
 };
 </script>
@@ -295,7 +332,7 @@ export default {
     border-right:1px solid #ebedf0; */
   text-align: center;
 }
-.van-cell{
+.van-cell {
   text-align: left !important;
 }
 #but {
