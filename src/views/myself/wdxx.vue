@@ -12,8 +12,7 @@
                             <span class="do">说</span>
                             <span class="content">太阳当空照花儿对我笑</span>
                             <span class="date">2019-7-23</span>
-                        </li>
-                            
+                        </li> 
                     </ul>
                 </div>
             </div>
@@ -28,7 +27,7 @@
             <div class="wdwd">
                 <div class="title">我的消息</div>
                 <div class="wdnr">
-
+                    {{neirong}} 
                 </div>
             </div>
             <div class="xtwd">
