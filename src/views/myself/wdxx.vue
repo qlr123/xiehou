@@ -90,7 +90,6 @@ export default {
         detail(data){
             console.log(data)
             var name = data.srcElement.parentElement.firstChild.innerHTML;
-            this.userid = data.srcElement.parentElement.id;
             axios({
                 method:'post',
                 url:'http://10.8.157.63:8080/user/readMessage',
@@ -100,6 +99,7 @@ export default {
                 this.show = true;
                 this.senduser = name
                 this.details = data.data
+                this.userid = data.data.recipients;
                 
          })
         },
