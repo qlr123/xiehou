@@ -1,6 +1,7 @@
 <template>
   <div id="header-box">
     <van-nav-bar
+      z-index="2"
       :fixed="true"
       :title="this.$store.state.title"
       :left-text="this.$store.state.leftTitle"

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { Toast } from "vant";
 import axios from "axios";
 export default {
   name: "dongtai",
@@ -40,55 +41,62 @@ export default {
     },
 
     onClickRight() {
-      var formdata = new FormData();
-      if (this.fileList.length != 0) {
-        this.file = this.fileList[0].file;
-        // console.log(1);
-      } else {
-        this.file = "";
-        // console.log(0);
-      }
+      var userId = localStorage.getItem("userId");
+      if (userId) {
+        var formdata = new FormData();
+        if (this.fileList.length != 0) {
+          this.file = this.fileList[0].file;
+          // console.log(1);
+        } else {
+          this.file = "";
+          // console.log(0);
+        }
 
-      var id = this.$route.query.id;
-      var data = {};
-      if (id) {
-        //修改动态
-        data = {
-          dynamiccontent: this.value,
-          uploadFile: this.file,
-          id: id
-        };
-        for (let key in data) {
-          formdata.append(key, data[key]);
+        var id = this.$route.query.id;
+        var data = {};
+        if (id) {
+          //修改动态
+          data = {
+            dynamiccontent: this.value,
+            uploadFile: this.file,
+            id: id
+          };
+          for (let key in data) {
+            formdata.append(key, data[key]);
+          }
+          axios({
+            method: "post",
+            headers: { "Content-Type": "multipart/form-data" },
+            url: "http://10.8.157.63:8080/user/updateDynamic",
+            data: formdata
+          }).then(res => {
+            // console.log(res);
+            this.$router.push({ name: "myaction" });
+          });
+          // console.log(1);
+        } else {
+          //新增动态
+          data = {
+            dynamiccontent: this.value,
+            uploadFile: this.file,
+            userId: userId
+          };
+          for (let key in data) {
+            formdata.append(key, data[key]);
+          }
+          // console.log(0);
+          axios({
+            method: "post",
+            headers: { "Content-Type": "multipart/form-data" },
+            url: "http://10.8.157.63:8080/user/addDynamic",
+            data: formdata
+          }).then(res => {
+            // console.log(res);
+            this.$router.push({ name: "myaction" });
+          });
         }
-        axios({
-          method: "post",
-          headers: { "Content-Type": "multipart/form-data" },
-          url: "http://10.8.157.63:8080/user/updateDynamic",
-          data: formdata
-        }).then(res => {
-          // console.log(res);
-        });
-        // console.log(1);
       } else {
-        //新增动态
-        data = {
-          dynamiccontent: this.value,
-          uploadFile: this.file,
-          userId: 1
-        };
-        for (let key in data) {
-          formdata.append(key, data[key]);
-        }
-        // console.log(0);
-        axios({
-          method: "post",
-          headers: { "Content-Type": "multipart/form-data" },
-          url: "http://10.8.157.63:8080/user/addDynamic",
-          data: formdata
-        }).then(res => {
-          // console.log(res);
-        });
+        Toast.fail("请先登录");
       }
 
       /*  var data = {
