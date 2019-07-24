@@ -4,6 +4,7 @@
 
     <div id="mid" style="overflow:hidden;">
       <van-row>
+        
         <van-uploader
           :after-read="afterRead"
           v-model="fileList"
@@ -194,6 +195,8 @@
 import heads from "../../components/Tou";
 import list from "../../../public/js/list";
 import axios from "axios";
+import { Toast } from 'vant';
+import qs from 'qs';
 export default {
   data() {
     return {
@@ -628,4 +631,5 @@ export default {
   background: pink;
   border-color: pink;
 }
+
 </style>

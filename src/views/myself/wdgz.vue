@@ -2,7 +2,7 @@
     <div class="gz-box">
         <van-tabs v-model="active">
         <van-tab title="关注我的"> 
-            <div class="item-box" v-for="item in values" :key="item.id" @click="detail">
+            <div class="item-box" v-for="item in values" :key="item.id" @click="detail" :vid="item.id">
                 <div class="img">
                     <img :src="item.headportrait" alt="" width="90px" height="90px">
                 </div>
@@ -14,7 +14,7 @@
             </div>
         </van-tab>    
         <van-tab title="我关注的">
-            <div class="item-box" v-for="item in values2" :key="item.id" @click="detail">
+            <div class="item-box" v-for="item in values2" :key="item.id" @click="detail" :vid="item.id">
                 <div class="img">
                     <img :src="item.headportrait" alt="" width="90px" height="90px">
                 </div>
@@ -69,7 +69,7 @@ export default {
             })
         },
         detail(data){
-            this.$router.push({path:'/detail',query:{userId:data.srcElement.id}})
+            this.$router.push({path:'/detail',query:{userId:data.srcElement.offsetParent.attributes[1].nodeValue}})
         }
     },
     beforeCreate(){

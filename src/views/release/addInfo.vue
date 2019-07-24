@@ -159,6 +159,15 @@ export default {
     this.$store.commit("righttitle", "重新编写"); //定义导航右侧按钮名字，没功能可以为空
     this.$store.commit("changeTitle", "发布"); //定义导航中间名字
     this.$store.commit("footercheck", "addInfo"); //底部按钮锁定，名字为路由跳转名字
+    
+    axios({
+      method: "post",
+      url: "http://10.8.157.63:8080/user/showUserById",
+      data: qs.stringify({ id: this.$store.state.userID })
+    }).then(data => {
+      console.log(data);
+      this.$store.commit("addmsg", data.data);
+    });
   }
 };
 </script>
