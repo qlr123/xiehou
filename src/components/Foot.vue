@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-tabbar v-model="active" router active-color="rgb(239, 66, 168)">
+    <van-tabbar :fixed="true" v-model="active" router active-color="rgb(239, 66, 168)">
       <van-tabbar-item name="home" icon="home-o" @click="tohome">首页</van-tabbar-item>
       <van-tabbar-item name="addInfo" icon="eye-o" @click="toaddInfo">发布</van-tabbar-item>
       <van-tabbar-item name="hd" icon="like-o" @click="tohd">活动</van-tabbar-item>

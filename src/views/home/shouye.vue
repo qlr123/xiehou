@@ -44,7 +44,7 @@
             <van-icon name="arrow-down" />
           </van-button>
           <van-popup class="dongtai" v-model="show">
-            <div @click="guanzhu">
+            <div @click="guanzhu(item.userId)">
               <van-icon name="star-o" />
               <span>关注Ti</span>
             </div>
@@ -74,6 +74,7 @@
 
 <script>
 import axios from "axios";
+import { Toast } from "vant";
 export default {
   data() {
     return {
@@ -121,8 +122,26 @@ export default {
     showPopup() {
       this.show = true;
     },
-    guanzhu() {
-      console.log("关注");
+    guanzhu(ouserId) {
+      // console.log("关注");
+      // console.log(ouserId);
+      var userId = localStorage.getItem("userId");
+      var data = {
+        attention: userId,
+        focused: ouserId
+      };
+      axios({
+        mothed: "post",
+        url: "http://10.8.157.63:8080/user/saveOrUpdateAttention",
+        params: data
+      }).then(res => {
+        // console.log(res);
+        if (res.data == 1) {
+          Toast("关注成功");
+        } else {
+          Toast("取消关注");
+        }
+      });
     },
     pingbi() {
       console.log("屏蔽");

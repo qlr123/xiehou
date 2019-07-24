@@ -63,7 +63,6 @@ export default {
       }).then(res => {
         //   console.log(res.data);
         this.userlist = res.data;
-        //   console.log(res.data[0].headportrait);
       });
     } else {
       Toast.fail("请先登录");

@@ -58,6 +58,7 @@ export default {
       height: ""
     };
   },
+
   methods: {
     toxxzs() {
       this.$router.push({ path: "/xxzs" });
@@ -65,33 +66,8 @@ export default {
     toXgmm() {
       this.$router.push({ path: "/Xgmm" });
     },
-
-    methods: {
-      toxxzs() {
-        this.$router.push({ path: "/xxzs" });
-      },
-      toXgmm() {
-        this.$router.push({ path: "/Xgmm" });
-      },
-      todongtai() {
-        this.$router.push({ path: "/myaction" });
-      },
-      wdxx() {
-        this.$router.push({ path: "/wdxx" });
-      },
-      wdyf() {
-        this.$router.push({ path: "/wdyf" });
-      },
-      wdhd() {
-        this.$router.push({ path: "/wdhd" });
-      },
-      wdgz() {
-        this.$router.push({ path: "/wdgz" });
-      },
-      exit() {
-        this.$router.push({ path: "/" });
-        location.reload();
-      }
+    todongtai() {
+      this.$router.push({ path: "/myaction" });
     },
     wdxx() {
       this.$router.push({ path: "/wdxx" });
@@ -106,9 +82,8 @@ export default {
       this.$router.push({ path: "/wdgz" });
     },
     exit() {
-      localStorage.removeItem("userId");
       this.$router.push({ path: "/" });
-      //   location.reload();
+      location.reload();
     }
   },
   beforeCreate() {
