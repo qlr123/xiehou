@@ -459,7 +459,7 @@ export default {
         monologue: this.monologue,
         characters: this.characters,
         uploadFile: this.imgdata,
-        id: this.$store.state.userID
+        id: localStorage.getItem("userId")
       };
       let fordata = new FormData();
 
