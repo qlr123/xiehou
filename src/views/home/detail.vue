@@ -107,7 +107,7 @@ export default {
     //用户信息
     axios({
       method: "get",
-      url: "http://10.8.157.63:8080/user/showUserById",
+      url: "http://39.97.226.25:8082/user/showUserById",
       params: { id: userId }
     }).then(res => {
       // console.log(res.data);
@@ -115,7 +115,7 @@ export default {
     });
     axios({
       method: "get",
-      url: "http://10.8.157.63:8080/user/showMate",
+      url: "http://39.97.226.25:8082/user/showMate",
       params: { id: userId }
     }).then(res => {
       // console.log(res.data);
@@ -141,7 +141,7 @@ export default {
       };
       axios({
         mothed: "post",
-        url: "http://10.8.157.63:8080/user/saveOrUpdateAttention",
+        url: "http://39.97.226.25:8082/user/saveOrUpdateAttention",
         params: data
       }).then(res => {
         // console.log(res);

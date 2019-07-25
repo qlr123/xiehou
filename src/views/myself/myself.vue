@@ -98,7 +98,7 @@ export default {
     this.$store.commit("footercheck", "myself"); //底部按钮锁定，名字为路由跳转名字
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/showUserById",
+      url: "http://39.97.226.25:8082/user/showUserById",
       data: qs.stringify({ id: localStorage.getItem("userId") })
     }).then(data => {
       //   console.log(data);

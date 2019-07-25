@@ -88,7 +88,7 @@ export default {
       timeover();
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/validEmail",
+        url: "http://39.97.226.25:8082/user/validEmail",
         data: qs.stringify({ email: this.email })
       }).then(data => {
         switch (data.data) {
@@ -106,7 +106,7 @@ export default {
     register() {
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/register",
+        url: "http://39.97.226.25:8082/user/register",
         data: qs.stringify({
           email: this.email,
           password: this.password,

@@ -122,7 +122,7 @@ export default {
   mounted() {
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/showUserById",
+      url: "http://39.97.226.25:8082/user/showUserById",
       params: { id: localStorage.getItem("userId") }
     }).then(data => {
       data = data.data;
@@ -155,7 +155,7 @@ export default {
     sat() {
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/apply",
+        url: "http://39.97.226.25:8082/user/apply",
         params: { hotlistId: 1, userId: localStorage.getItem("userId") }
       }).then(data => {
         // console.log(data)

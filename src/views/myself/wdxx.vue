@@ -87,7 +87,7 @@ export default {
       var name = data.srcElement.parentElement.firstChild.innerHTML;
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/readMessage",
+        url: "http://39.97.226.25:8082/user/readMessage",
         data: qs.stringify({ id: data.srcElement.parentElement.id })
       }).then(data => {
         // console.log(data);
@@ -103,7 +103,7 @@ export default {
       var name = data.srcElement.parentElement.firstChild.innerHTML;
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/readMessage",
+        url: "http://39.97.226.25:8082/user/readMessage",
         data: qs.stringify({ id: data.srcElement.parentElement.id })
       }).then(data => {
         // console.log(data);
@@ -126,7 +126,7 @@ export default {
 
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/myNotReadUserMessage",
+      url: "http://39.97.226.25:8082/user/myNotReadUserMessage",
       data: qs.stringify({ addresser: localStorage.getItem("userId") })
     }).then(data => {
       console.log(data); //未读用户
@@ -141,7 +141,7 @@ export default {
 
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/myNotReadSystemMessage",
+      url: "http://39.97.226.25:8082/user/myNotReadSystemMessage",
       data: qs.stringify({ addresser: localStorage.getItem("userId") })
     }).then(data => {
       // console.log(data); //未读系统
@@ -156,7 +156,7 @@ export default {
 
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/myReadUserMessage",
+      url: "http://39.97.226.25:8082/user/myReadUserMessage",
       data: qs.stringify({ addresser: localStorage.getItem("userId") })
     }).then(data => {
       console.log(data); //已读用户
@@ -172,7 +172,7 @@ export default {
 
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/myReadSystemMessage",
+      url: "http://39.97.226.25:8082/user/myReadSystemMessage",
       data: qs.stringify({ addresser: localStorage.getItem("userId") })
     }).then(data => {
       console.log(data); //已读系统

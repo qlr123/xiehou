@@ -96,7 +96,7 @@ export default {
            console.log(data);
             axios({
             method: "post",
-            url: "http://10.8.157.63:8080/user/chooseMate",
+            url: "http://39.97.226.25:8082/user/chooseMate",
             params:data,
             headers:{
                   'Content-Type':'multipart/form-data'
@@ -158,7 +158,7 @@ export default {
     mounted(){
         axios({
             method: "post",
-            url: "http://10.8.157.63:8080/user/showUserById",
+            url: "http://39.97.226.25:8082/user/showUserById",
             data: qs.stringify({ id: this.$store.state.userID })
     }).then(data => {
       console.log(data);
