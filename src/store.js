@@ -15,7 +15,8 @@ export default new Vuex.Store({
     values: "", //存放个人所有信息
     //zpy的state数据start
     selfInfo: null, // 发布自己的信息
-    favoredType: null //发布心意对象的信息
+    favoredType: null ,//发布心意对象的信息
+    receiveinfo:null
     //end
   },
   mutations: {
@@ -24,6 +25,12 @@ export default new Vuex.Store({
       value //添加所有个人信息
     ) {
       state.values = value;
+    },
+    newinfos(
+      state,
+      value //添加所有个人信息
+    ) {
+      state.selfInfo = value;
     },
     adduserID(
       state,

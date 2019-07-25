@@ -24,7 +24,9 @@ export default {
       this.$router.go(-1);
     },
     onClickRight() {
-      this.$router.push("/addInfo");
+      this.$router.push("/favoredType");
+      
+      
     }
   },
   data() {
