@@ -210,8 +210,10 @@ export default {
         "水瓶座",
         "双鱼座",
         "金牛座",
+        "白羊座",
         "双子座",
         "巨蟹座",
+        "狮子座",
         "处女座",
         "天秤座",
         "天蝎座",
@@ -485,22 +487,23 @@ export default {
         this.agebool
       ) {
         console.log(fordata);
-        this.$store.state.selfInfo = objinfo;
-        console.log(this.$store.state.selfInfo);
-        axios({
-          url: "http://10.8.157.63:8080/user/updateUserInfo",
-          method: "post",
-          data: fordata,
-          headers: {
-            "Content-Type": "multipart/form-data"
-          }
-        })
-          .then(function(data) {
-            console.log(data);
-          })
-          .catch(function(err) {
-            console.log(err);
-          });
+        this.$store.state.selfInfo = objinfo
+        console.log(this.$store.state.selfInfo)
+            axios({
+              url: "http://10.8.157.63:8080/user/updateUserInfo",
+              method:"post",
+              data:fordata,
+              headers:{
+                  'Content-Type':'multipart/form-data'
+              }
+           }).then((data)=>{
+               if(data.data==1){
+                 this.$router.push("/addInfo")
+               }
+           }).catch(function(err){
+               console.log(err)
+           })
+
       } else {
         this.$toast("请按照规则填写");
       }
@@ -629,8 +632,7 @@ export default {
   text-align: left !important;
 }
 #mid {
-  margin-top: 46px;
-  text-align: left !important;
+  text-align: left !important
 }
 #but {
   margin: 30px 0;

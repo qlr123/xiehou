@@ -21,6 +21,7 @@ import wdxx from "./views/myself/wdxx.vue";
 import wdyf from "./views/myself/wdyf.vue";
 import wdhd from "./views/myself/wdhd.vue";
 import wdgz from "./views/myself/wdgz.vue";
+import chating from "./views/release/chating.vue";
 Vue.use(Router);
 export default new Router({
   routes: [
@@ -134,6 +135,11 @@ export default new Router({
       component: release
     },
     {
+      path: "/chating",
+      name: "chating",
+      component:chating
+    },
+    {
       path: "/addInfo",
       name: "addInfo",
       component: addInfo,
@@ -165,6 +171,11 @@ export default new Router({
       path: "/detail",
       name: "detail",
       component: () => import("./views/home/detail.vue")
+    },
+    {
+      path: "/chat",
+      name: "chat",
+      component: () => import("./views/home/liaotian.vue")
     }
   ]
 });

@@ -6,7 +6,7 @@
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">年龄</van-col>
         <van-col span="8">
           <van-field
-            v-model="minAge"
+            v-model.number="minAge"
             placeholder="最小值"
             type="number"
             right-icon="question-o"
@@ -17,7 +17,7 @@
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">至</van-col>
         <van-col span="8">
           <van-field
-            v-model="maxAge"
+            v-model.number="maxAge"
             placeholder="最大值"
             type="number"
             right-icon="question-o"
@@ -31,7 +31,7 @@
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">身高</van-col>
         <van-col span="8">
           <van-field
-            v-model="minHeight"
+            v-model.number="minHeight"
             placeholder="最小值"
             type="number"
             right-icon="question-o"
@@ -42,7 +42,7 @@
         <van-col span="4" style="line-height:44px;color:#323233;font-size: 14px;">至</van-col>
         <van-col span="8">
           <van-field
-            v-model="maxHeight"
+            v-model.number="maxHeight"
             placeholder="最大值"
             type="number"
             right-icon="question-o"
@@ -59,6 +59,15 @@
           :columns="marryColumns"
           @cancel="marryCancel"
           @confirm="marryConfirm"
+        />
+      </van-popup>
+       <van-field v-model="sex" label="性别" @click="sexShows" readonly placeholder="请选择性别" />
+      <van-popup v-model="sexShow" style="width:100%" position="bottom">
+        <van-picker
+          show-toolbar
+          :columns="sexColumns"
+          @cancel="sexCancel"
+          @confirm="sexConfirm"
         />
       </van-popup>
 
@@ -144,6 +153,9 @@ export default {
       eduinfoShow: false,
       eduinfoColumns: ["高中及以下", "专科", "本科", "研究生", "博士"],
       address: "",
+      sex: "",
+      sexShow: false,
+      sexColumns: ["男", "女"],
       addressShow: false,
       areaList: list,
       hobbies: "",
@@ -180,7 +192,7 @@ export default {
           this.maxAgeerr = "";
           this.maxAgeboll = true;
         } else {
-          this.maxAgeerr = "身高不合理";
+          this.maxAgeerr = "年龄不合理";
           this.maxAgeboll = false;
         }
       }
@@ -223,53 +235,67 @@ export default {
         income: this.income,
         eduinfo: this.eduinfo,
         address: this.address,
-        hobbies: this.hobbies
+        characters: this.hobbies,
+        sex:this.sex
       };
       console.log(obj);
-
-      for (const key in obj) {
-        if (obj[key] == "") {
-          switch (key) {
-            case "marry":
-              tipinfo = "请选择您期望婚姻状况";
-              break;
-            case "income":
-              tipinfo = "请选择您期望的年薪";
-              break;
-            case "eduinfo":
-              tipinfo = "请选择您期望的教育经历";
-              break;
-            case "address":
-              tipinfo = "请选择您期望的位置";
-              break;
-            case "hobbies":
-              tipinfo = "请您简要描述期望的性格";
-              break;
-            case "minAge":
-              tipinfo = "请您填写最小年龄";
-              break;
-            case "maxAge":
-              tipinfo = "请选择您期望的最大年龄";
-              break;
-            case "minHeight":
-              tipinfo = "请选择您期望的最小身高";
-              break;
-            case "maxHeight":
-              tipinfo = "请选择您期望的最大身高";
-              break;
+      let num = 0;
+      let marks = true;
+      for(const key in obj){
+          if(obj[key]==""){
+            num++
           }
-          this.$toast(tipinfo);
-          return (mark = false);
-        }
       }
+      if(num==10) {
+        marks =false ;
+        this.$toast("至少填写一项");
+        return
+      }
+      console.log(num)
+      // for (const key in obj) {
+      //   if (obj[key] == "") {
+      //     switch (key) {
+      //       case "marry":
+      //         tipinfo = "请选择您期望婚姻状况";
+      //         break;
+      //       case "income":
+      //         tipinfo = "请选择您期望的年薪";
+      //         break;
+      //       case "eduinfo":
+      //         tipinfo = "请选择您期望的教育经历";
+      //         break;
+      //       case "address":
+      //         tipinfo = "请选择您期望的位置";
+      //         break;
+      //       case "hobbies":
+      //         tipinfo = "请您简要描述期望的性格";
+      //         break;
+      //       case "minAge":
+      //         tipinfo = "请您填写最小年龄";
+      //         break;
+      //       case "maxAge":
+      //         tipinfo = "请选择您期望的最大年龄";
+      //         break;
+      //       case "minHeight":
+      //         tipinfo = "请选择您期望的最小身高";
+      //         break;
+      //       case "maxHeight":
+      //         tipinfo = "请选择您期望的最大身高";
+      //         break;
+      //     }
+      //     this.$toast(tipinfo);
+      //     return (mark = false);
+      //   }
+      // }
       if (
-        mark &&
+        marks &&
         this.maxHeightbool &&
         this.minHeightbool &&
         this.minAgeboll &&
         this.maxAgeboll
       ) {
         this.$store.state.favoredType = obj;
+        this.$router.push('/addInfo')
       } else {
         this.$toast("请按照规则填写");
       }
@@ -319,13 +345,22 @@ export default {
     },
     incomeCancel() {
       this.incomeShow = false;
+    },
+    sexShows() {
+      this.sexShow = true;
+    },
+    sexConfirm(value, index) {
+      this.sexShow = false;
+      this.sex = value;
+    },
+    sexCancel() {
+      this.sexShow = false;
     }
   }
 };
 </script>
 <style scoped>
 #mid {
-  margin-top: 46px;
 }
 .van-col {
   /*border-left:1px solid #ebedf0;

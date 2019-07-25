@@ -1,6 +1,7 @@
 <template >
   <div class="main">
     <van-nav-bar
+      style="background:#fa6481;color:#fff"
       :fixed="true"
       :title="info"
       left-text="返回"
@@ -35,21 +36,16 @@
           <van-field v-model="maxage" placeholder="最大值" />
         </van-col>
       </van-row>
-      <van-row type="flex">
-        <van-col offset="2" span="4" style="line-height:44px;color:#323233;font-size: 14px;">年收入</van-col>
-        <van-col span="6">
-          <van-field v-model="money" />
-        </van-col>
-      </van-row>
-      <van-field readonly clickable label="地址" :value="value1" @click="showPicker1 = true" />
-      <van-popup v-model="showPicker1" position="bottom">
+      <van-field v-model="income" label="年收入" readonly @click="incomeShows" placeholder="请填写您的年收入" />
+      <van-popup v-model="incomeShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
-          :columns="province_list"
-          @cancel="showPicker1 = false"
-          @confirm="onConfirm1"
+          :columns="incomeColumns"
+          @cancel="incomeCancel"
+          @confirm="incomeConfirm"
         />
       </van-popup>
+
       <van-field readonly clickable label="婚况" :value="value2" @click="showPicker2 = true" />
       <van-popup v-model="showPicker2" position="bottom">
         <van-picker
@@ -65,18 +61,26 @@
 
     <div class="zhanshi">
       <ul>
-        <li style="position:relative;padding:14px;">
+        <li style="position:relative;padding:14px;" v-for="item in list">
           <van-image
             style="float:left"
             width="100"
             height="100"
-            src="https://img.yzcdn.cn/vant/cat.jpeg"
+            :src="item.headportrait"
+            @click="xiqin(item.id)"
           />
-          <p style="width:160px;float:left ;text-align:left;margin-left:20px;">名称</p>
+          <p
+            style="width:160px;float:left ;text-align:left;margin-left:20px;font-size:20px"
+          >{{item.username}}</p>
           <p
             style="width:160px;float:left ;text-align:left;margin-left:20px;margin-top:10px;font-size:20px"
-          >介绍</p>
-          <van-button round style="background:#fb7379;font-size:20px" size="large">打招呼</van-button>
+          >{{item.sex}}</p>
+          <van-button
+            round
+            style="background:#fb7379;font-size:20px"
+            size="large"
+            @click="chat(item.id)"
+          >打招呼</van-button>
         </li>
       </ul>
     </div>
@@ -84,6 +88,7 @@
 </template>
 
 <script>
+import axiox from "axios";
 export default {
   name: "shaixuan",
   data() {
@@ -103,44 +108,21 @@ export default {
       minage: "",
       maxage: "",
       money: "",
+      income: "",
+      incomeShow: false,
 
-      province_list: [
-        "北京市",
-        "上海市",
-        "天津市",
-        "重庆市",
-        "河北省",
-        "山西省",
-        "辽宁省",
-        "吉林省",
-        "河南省",
-        "江苏省",
-        "浙江省",
-        "安徽省",
-        "福建省",
-        "江西省",
-        "山东省",
-        "湖北省",
-        "湖南省",
-        "广东省",
-        "海南省",
-        "四川省",
-        "贵州省",
-        "云南省",
-        "陕西省",
-        "甘肃省",
-        "青海省",
-        "黑龙江省",
-        "内蒙古自治区",
-        "广西壮族自治区",
-        "西藏自治区",
-        "宁夏回族自治区",
-        "新疆维吾尔自治区",
-        "台湾省",
-        "香港特别行政区",
-        "澳门特别行政区"
+      incomeColumns: [
+        "1-5万",
+        "5-10万",
+        "10-15万",
+        "15-20万",
+        "20-35万",
+        "35-50万",
+        "50-100万",
+        "100万以上"
       ],
-      marryColumns: ["未婚", "单身离异", "离异带孩", "丧偶单身", "丧偶带孩"]
+      marryColumns: ["未婚", "单身离异", "离异带孩", "丧偶单身", "丧偶带孩"],
+      list: []
     };
   },
   mounted() {
@@ -157,19 +139,52 @@ export default {
       this.value = value;
       this.showPicker = false;
     },
-    onConfirm1(value1) {
-      this.value1 = value1;
-      this.showPicker1 = false;
+    incomeShows() {
+      this.incomeShow = true;
     },
+    incomeConfirm(value, index) {
+      this.incomeShow = false;
+      this.income = value;
+    },
+    incomeCancel() {
+      this.incomeShow = false;
+    },
+
     onConfirm2(value2) {
       this.value2 = value2;
       this.showPicker2 = false;
     },
     sousuo() {
       console.log("搜索");
+      var data = {
+        sex: this.value,
+        minHeight: this.minHeight,
+        maxHeight: this.maxHeight,
+        minAge: this.minage,
+        maxAge: this.maxge,
+        income: this.income,
+        marry: this.value2
+      };
+      // console.log(data);
+      axiox({
+        method: "post",
+        url: "http://10.8.157.63:8080/user/chooseMate",
+        params: data
+      }).then(res => {
+        // console.log(res);
+        this.list = res.data;
+        this.show = false;
+      });
     },
     quxiao() {
       this.show = false;
+    },
+    xiqin(i) {
+      // console.log(i);
+      this.$router.push({ name: "detail", query: { userId: i } });
+    },
+    chat(i) {
+      this.$router.push({ name: "chat", query: { id: i } });
     }
   }
 };
@@ -182,5 +197,17 @@ p {
 }
 .zhanshi {
   margin-top: 46px;
+}
+.main .van-nav-bar__text {
+  color: #fff;
+  line-height: 48px;
+}
+.main .van-nav-bar .van-icon {
+  color: #fff;
+}
+.main .van-nav-bar__title {
+  color: #fff;
+  letter-spacing: 2px;
+  font-size: 15px;
 }
 </style>
