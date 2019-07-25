@@ -5,7 +5,7 @@
       邂逅之恋
       <h3>登录页面</h3>
     </h2>
-
+  <div class="inner">
     <van-cell-group>
       <van-field
         v-model="email"
@@ -29,6 +29,7 @@
       <router-link to="/" class="bc">返回主页</router-link>
     </div>
   </div>
+</div>
 </template>
 <script>
 import axios from "axios";
@@ -89,8 +90,9 @@ export default {
   background: url(../../../public/images/xin.png) no-repeat top center/contain,
     url(../../../public/images/beijing.png) no-repeat center center/cover,
     linear-gradient(to bottom right, #ffa4d0, #fb7379);
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  min-height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -173,5 +175,12 @@ export default {
 }
 #login-box /deep/ i {
   color: #fff !important;
+}
+.inner{
+  position: relative;
+  width: 100%;
+}
+.inner .van-button--normal{
+  width: 100%
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="myself-box" :style="{'height':height}">
+  <div id="myself-box">
     <div class="top-box">
       <div class="img-box">
         <div class="img">
@@ -116,6 +116,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  min-height: 600px
 }
 .top-box {
   background: linear-gradient(to bottom, #fa6481, #ffa4d0);
