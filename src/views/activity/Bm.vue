@@ -104,13 +104,14 @@
      style="height:50px;line-heght:50px"
   />
 <van-tabbar v-model="active">
-  <van-button type="info" style="margin:0 auto" to="/xq">我要报名</van-button>
+  <van-button type="info" style="margin:0 auto" @click="sat()">我要报名</van-button>
 </van-tabbar>
   </van-cell-group>
     </div>
 </template>
 <script>
 import axios from 'axios';
+import { Toast } from "vant";
 import 'lib-flexible'
 export default {
     name:"Bm",
@@ -164,6 +165,22 @@ export default {
 
       return true;
     },
+    sat(){
+      axios({
+        method:"post",
+        url:"http://10.8.157.63:8080/user/apply",
+        params:{hotlistId:1, userId:localStorage.getItem("userId")}
+      }).then((data)=>{
+        console.log(data)
+        if(data.data==1){
+          Toast.success("已报名")
+          this.$router.push({path:"/"})
+        }else{
+          Toast.fail("已报名请勿重复提交")
+          // location.reload()
+        }
+      })
+    }
     }
 }
 </script>

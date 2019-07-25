@@ -1,25 +1,26 @@
 <template style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379);
 ">
-<div style="background:linear-gradient(to bottom right, #ffa4d0, #fb7379);width:375px;height:1236px;
+<div style="background:linear-gradient(to bottom right, #ffa4d0, #fb7379);
 ">
 <van-nav-bar
   title="活动"
   left-arrow
   :fixed=true
   @click-left="onClickLeft"
+  style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
 />
 <van-cell-group style="border:1px solid gray;margin-top:15px;margin:0 auto;background: linear-gradient(to bottom right, #ffa4d0, #fb7379);
  position:relative">
 <van-image
-  width="327px"
+  width="90vw"
   height="220px"
-  src="https://img.yzcdn.cn/vant/cat.jpeg"
+  :src="src"
 />
 <van-cell-group style="position:absolute;left:13px;bottom:0px;background: linear-gradient(to bottom right, #ffa4d0, #fb7379)" >
 <van-image
   width="45px"
   height="45px"
-  src="https://img.yzcdn.cn/vant/cat.jpeg"
+  :src="src"
 />
 </van-cell-group>
 <van-cell-group style="width:135px;margin-left:70px;margin-top:1.5px;background: linear-gradient(to bottom right, #ffa4d0, #fb7379)">
@@ -78,7 +79,7 @@
     placeholder=""
     style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)"
   />
-  <van-button type="primary" @click="showPopup1" style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)">
+  <van-button  @click="showPopup1" style="background: linear-gradient(to bottom right, #ffa4d0, #fb7379)">
   详情咨询
   </van-button>
   <van-popup v-model="show1" style="width:7rem;height:7rem;border-radius:50%;line-height:7rem;">qq949051451</van-popup>

@@ -109,7 +109,7 @@ export default {
                     icon: 'like-o'
                     });
                 }else if(data.data.length!=0){
-                    this.$router.push("/chat");
+                    this.$router.push("/chating");
                 }
             })
             
