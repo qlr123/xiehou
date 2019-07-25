@@ -107,7 +107,7 @@ export default {
   mounted() {
     axios({
       method: "get",
-      url: "http://10.8.157.63:8080/user/showDynamic"
+      url: "https://10.8.157.63:8080/user/showDynamic"
     }).then(res => {
       this.info = res.data;
     });
@@ -132,7 +132,7 @@ export default {
       };
       axios({
         mothed: "post",
-        url: "http://10.8.157.63:8080/user/saveOrUpdateAttention",
+        url: "https://10.8.157.63:8080/user/saveOrUpdateAttention",
         params: data
       }).then(res => {
         // console.log(res);
