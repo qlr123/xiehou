@@ -67,7 +67,7 @@ export default {
           axios({
             method: "post",
             headers: { "Content-Type": "multipart/form-data" },
-            url: "http://10.8.157.63:8080/user/updateDynamic",
+            url: "http://39.97.226.25:8082/user/updateDynamic",
             data: formdata
           }).then(res => {
             // console.log(res);
@@ -88,7 +88,7 @@ export default {
           axios({
             method: "post",
             headers: { "Content-Type": "multipart/form-data" },
-            url: "http://10.8.157.63:8080/user/addDynamic",
+            url: "http://39.97.226.25:8082/user/addDynamic",
             data: formdata
           }).then(res => {
             // console.log(res);

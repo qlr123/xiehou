@@ -32,7 +32,7 @@ export default {
         xgpwd(){
             axios({
                 method:'post',
-                url:'http://10.8.157.63:8080/user/resetPassword',
+                url:'http://39.97.226.25:8082/user/resetPassword',
                 data:qs.stringify({email:this.$store.state.email,password:this.password}),
             }).then((data)=>{
                 switch(data.data)

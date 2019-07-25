@@ -65,7 +65,7 @@ export default {
       // console.log(data.srcElement.id);
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/saveOrUpdateAttention",
+        url: "http://39.97.226.25:8082/user/saveOrUpdateAttention",
         data: qs.stringify({
           attention: localStorage.getItem("userId"),
           focused: data.srcElement.id
@@ -103,7 +103,7 @@ export default {
 
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/myFocused",
+      url: "http://39.97.226.25:8082/user/myFocused",
       data: qs.stringify({ id: localStorage.getItem("userId") })
     }).then(data => {
       // console.log(data); //关注我的
@@ -112,7 +112,7 @@ export default {
 
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/myAttention",
+      url: "http://39.97.226.25:8082/user/myAttention",
       data: qs.stringify({ id: localStorage.getItem("userId") })
     }).then(data => {
       // console.log(data); //我关注的

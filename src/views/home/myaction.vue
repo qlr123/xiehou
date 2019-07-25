@@ -58,7 +58,7 @@ export default {
     if (userId) {
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/showDynamicById",
+        url: "http://39.97.226.25:8082/user/showDynamicById",
         params: { id: userId }
       }).then(res => {
         //   console.log(res.data);
@@ -83,7 +83,7 @@ export default {
       console.log("置顶");
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/upDynamic",
+        url: "http://39.97.226.25:8082/user/upDynamic",
         params: { id: id, userId: 1 }
       }).then(res => {
         // console.log(res);
@@ -96,7 +96,7 @@ export default {
 
       axios({
         method: "post",
-        url: "http://10.8.157.63:8080/user/deleteDynamic",
+        url: "http://39.97.226.25:8082/user/deleteDynamic",
         params: { id: id }
       }).then(res => {
         // console.log(res);

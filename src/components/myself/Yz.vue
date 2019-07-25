@@ -79,7 +79,7 @@ export default {
 
             axios({
                 method:'post',
-                url:'http://10.8.157.63:8080/user/forgetPassword',
+                url:'http://39.97.226.25:8082/user/forgetPassword',
                 data:qs.stringify({email:this.email}),
             }).then((data)=>{
                 switch(data.data)
@@ -99,7 +99,7 @@ export default {
         pwdback(){
             axios({
                 method:'post',
-                url:'http://10.8.157.63:8080/user/vaildYzm',
+                url:'http://39.97.226.25:8082/user/vaildYzm',
                 data:qs.stringify({email:this.email,yzm:this.sms}),
             }).then((data)=>{
                 console.log(data)

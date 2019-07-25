@@ -537,7 +537,7 @@ export default {
       this.$store.state.selfInfo = objinfo;
       console.log(this.$store.state.selfInfo);
       axios({
-        url: "http://10.8.157.63:8080/user/updateUserInfo",
+        url: "http://39.97.226.25:8082/user/updateUserInfo",
         method: "post",
         data: fordata,
         headers: {

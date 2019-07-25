@@ -125,7 +125,7 @@ export default {
   mounted() {
     axios({
       method: "post",
-      url: "http://10.8.157.63:8080/user/showAllHotlist"
+      url: "http://39.97.226.25:8082/user/showAllHotlist"
     }).then(data => {
       data = data.data;
       // console.log(data);
