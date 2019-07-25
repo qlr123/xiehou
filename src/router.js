@@ -165,6 +165,11 @@ export default new Router({
       path: "/detail",
       name: "detail",
       component: () => import("./views/home/detail.vue")
+    },
+    {
+      path: "/chat",
+      name: "chat",
+      component: () => import("./views/home/liaotian.vue")
     }
   ]
 });

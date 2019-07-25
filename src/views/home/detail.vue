@@ -92,6 +92,7 @@
 </template>
 
 <script>
+import { Toast } from "vant";
 import axios from "axios";
 export default {
   name: "detail",
@@ -103,6 +104,7 @@ export default {
   },
   mounted() {
     var userId = this.$route.query.userId;
+    //用户信息
     axios({
       method: "get",
       url: "http://10.8.157.63:8080/user/showUserById",
@@ -126,9 +128,29 @@ export default {
     },
     hi() {
       console.log("hi");
+      var id = this.list.id;
+      this.$router.push({ name: "chat", query: { id: id } });
     },
     guanzhu() {
-      console.log("关注");
+      // console.log("关注");
+      var ouserId = this.$route.query.userId;
+      var userId = localStorage.getItem("userId");
+      var data = {
+        attention: userId,
+        focused: ouserId
+      };
+      axios({
+        mothed: "post",
+        url: "http://10.8.157.63:8080/user/saveOrUpdateAttention",
+        params: data
+      }).then(res => {
+        // console.log(res);
+        if (res.data == 1) {
+          Toast("关注成功");
+        } else {
+          Toast("取消关注");
+        }
+      });
     }
   }
 };

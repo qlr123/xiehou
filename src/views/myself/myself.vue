@@ -82,12 +82,13 @@ export default {
       this.$router.push({ path: "/wdgz" });
     },
     exit() {
+      localStorage.removeItem("userId");
       this.$router.push({ path: "/" });
       location.reload();
     }
   },
   beforeCreate() {
-    if (this.$store.state.email == "") {
+    if (localStorage.getItem("userId") == null) {
       Toast.fail("你还尚未登录，请登录！");
       this.$router.push({ path: "/login" });
     }
@@ -98,9 +99,9 @@ export default {
     axios({
       method: "post",
       url: "http://10.8.157.63:8080/user/showUserById",
-      data: qs.stringify({ id: this.$store.state.userID })
+      data: qs.stringify({ id: localStorage.getItem("userId") })
     }).then(data => {
-      console.log(data);
+      //   console.log(data);
       this.$store.commit("addmsg", data.data);
     });
   },
