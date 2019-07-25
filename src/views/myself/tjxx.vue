@@ -4,7 +4,6 @@
 
     <div id="mid" style="overflow:hidden;">
       <van-row>
-        
         <van-uploader
           :after-read="afterRead"
           v-model="fileList"
@@ -25,7 +24,13 @@
         :error-message="usernameerr"
         @click-right-icon="$toast('请输入您的真实姓名')"
       />
-      <van-field v-model="sex" label="性别" :placeholder="this.$store.state.values.sex" readonly @click="show" />
+      <van-field
+        v-model="sex"
+        label="性别"
+        :placeholder="this.$store.state.values.sex"
+        readonly
+        @click="show"
+      />
       <van-popup v-model="shows" style="width:100%" position="bottom">
         <van-picker show-toolbar :columns="sexcolumns" @cancel="onCancel" @confirm="onConfirm" />
       </van-popup>
@@ -76,7 +81,13 @@
         />
       </van-popup>
 
-      <van-field v-model="blood" label="血型" readonly @click="bloodShows" :placeholder="this.$store.state.values.blood" />
+      <van-field
+        v-model="blood"
+        label="血型"
+        readonly
+        @click="bloodShows"
+        :placeholder="this.$store.state.values.blood"
+      />
       <van-popup v-model="bloodShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -86,7 +97,13 @@
         />
       </van-popup>
 
-      <van-field v-model="nation" label="民族" readonly @click="nationShows" :placeholder="this.$store.state.values.nation" />
+      <van-field
+        v-model="nation"
+        label="民族"
+        readonly
+        @click="nationShows"
+        :placeholder="this.$store.state.values.nation"
+      />
       <van-popup v-model="nationShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -96,7 +113,13 @@
         />
       </van-popup>
 
-      <van-field v-model="eduinfo" label="学历" readonly @click="eduinfoShows" :placeholder="this.$store.state.values.eduinfo" />
+      <van-field
+        v-model="eduinfo"
+        label="学历"
+        readonly
+        @click="eduinfoShows"
+        :placeholder="this.$store.state.values.eduinfo"
+      />
       <van-popup v-model="eduinfoShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -106,12 +129,24 @@
         />
       </van-popup>
 
-      <van-field v-model="job" label="工作" readonly @click="jobShows" :placeholder="this.$store.state.values.job" />
+      <van-field
+        v-model="job"
+        label="工作"
+        readonly
+        @click="jobShows"
+        :placeholder="this.$store.state.values.job"
+      />
       <van-popup v-model="jobShow" style="width:100%" position="bottom">
         <van-picker show-toolbar :columns="jobColumns" @cancel="jobCancel" @confirm="jobConfirm" />
       </van-popup>
 
-      <van-field v-model="income" label="年收入" readonly @click="incomeShows" :placeholder="this.$store.state.values.income" />
+      <van-field
+        v-model="income"
+        label="年收入"
+        readonly
+        @click="incomeShows"
+        :placeholder="this.$store.state.values.income"
+      />
       <van-popup v-model="incomeShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -132,7 +167,13 @@
         <van-area :area-list="areaList" @cancel="addressCancel" @confirm="addressConfirm" />
       </van-popup>
 
-      <van-field v-model="marry" label="婚状" readonly @click="marryShows" :placeholder="this.$store.state.values.marry" />
+      <van-field
+        v-model="marry"
+        label="婚状"
+        readonly
+        @click="marryShows"
+        :placeholder="this.$store.state.values.marry"
+      />
       <van-popup v-model="marryShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -142,7 +183,13 @@
         />
       </van-popup>
 
-      <van-field v-model="house" label="购房情况" readonly @click="houseShows" :placeholder="this.$store.state.values.house" />
+      <van-field
+        v-model="house"
+        label="购房情况"
+        readonly
+        @click="houseShows"
+        :placeholder="this.$store.state.values.house"
+      />
       <van-popup v-model="houseShow" style="width:100%" position="bottom">
         <van-picker
           show-toolbar
@@ -195,8 +242,8 @@
 import heads from "../../components/Tou";
 import list from "../../../public/js/list";
 import axios from "axios";
-import { Toast } from 'vant';
-import qs from 'qs';
+import { Toast } from "vant";
+import qs from "qs";
 export default {
   data() {
     return {
@@ -329,17 +376,17 @@ export default {
   components: {
     heads
   },
-  beforeCreate(){
-    this.$store.commit('lefttitle','返回')//定义导航左侧名字
-    this.$store.commit('righttitle','')//定义导航右侧按钮名字，没功能可以为空
-    this.$store.commit('changeTitle','编写个人信息')//定义导航中间名字
+  beforeCreate() {
+    this.$store.commit("lefttitle", "返回"); //定义导航左侧名字
+    this.$store.commit("righttitle", ""); //定义导航右侧按钮名字，没功能可以为空
+    this.$store.commit("changeTitle", "编写个人信息"); //定义导航中间名字
   },
   mounted() {},
   watch: {
     username: function(newinfo) {
       let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
       this.bool = reg.test(newinfo);
-      console.log(this.bool);
+      // console.log(this.bool);
       if (this.bool) {
         this.usernameerr = "";
       } else {
@@ -347,7 +394,7 @@ export default {
       }
     },
     age: function(newinfo) {
-      console.log(newinfo);
+      // console.log(newinfo);
       if (newinfo >= 18 && newinfo < 100) {
         this.ageerr = "";
         this.agebool = true;
@@ -378,17 +425,17 @@ export default {
   methods: {
     afterRead(file) {
       // 此时可以自行将文件上传至服务器
-      console.log(file);
-    //   this.headerImg = file.content;
-    //   let fordata = new FormData();
-    //   fordata.append("avatarfile", file.file);
-    //   this.imgdata = fordata;
-    //   console.log(fordata.get("avatarfile"));
-        this.imgdata = file.file
+      // console.log(file);
+      //   this.headerImg = file.content;
+      //   let fordata = new FormData();
+      //   fordata.append("avatarfile", file.file);
+      //   this.imgdata = fordata;
+      //   console.log(fordata.get("avatarfile"));
+      this.imgdata = file.file;
     },
-    deleteimg(file){
-        this.imgdata = "";
-        console.log(this.imgdata)
+    deleteimg(file) {
+      this.imgdata = "";
+      // console.log(this.imgdata)
     },
 
     sendimgs() {
@@ -411,26 +458,26 @@ export default {
         hobbies: this.hobbies,
         monologue: this.monologue,
         characters: this.characters,
-        uploadFile:this.imgdata,
-        id:this.$store.state.userID
+        uploadFile: this.imgdata,
+        id: this.$store.state.userID
       };
-        let fordata = new FormData();
-       
-      console.log(fordata.get("uploadFile"));
+      let fordata = new FormData();
+
+      // console.log(fordata.get("uploadFile"));
       let tipinfo = "";
       let othis = this;
-      for(let key in objinfo){
-        if(objinfo[key] == "") {
-          othis[key] = othis.$store.state.values[key]
+      for (let key in objinfo) {
+        if (objinfo[key] == "") {
+          othis[key] = othis.$store.state.values[key];
         }
       }
       for (let key in objinfo) {
         // console.log(objinfo[key],key);
         if (objinfo[key] == "") {
-          console.log(objinfo.key, 1, key);
+          // console.log(objinfo.key, 1, key);
           switch (key) {
             case "uploadFile":
-              Toast.fail('图片必须上传！');
+              Toast.fail("图片必须上传！");
               break;
             case "username":
               objinfo.username = this.$store.state.values.username;
@@ -454,10 +501,10 @@ export default {
               objinfo.blood = this.$store.state.values.blood;
               break;
             case "nation":
-              objinfo.nation= this.$store.state.values.nation;
+              objinfo.nation = this.$store.state.values.nation;
               break;
             case "eduinfo":
-              objinfo.eduinfo= this.$store.state.values.eduinfo;
+              objinfo.eduinfo = this.$store.state.values.eduinfo;
               break;
             case "job":
               objinfo.job = this.$store.state.values.job;
@@ -469,10 +516,10 @@ export default {
               objinfo.address = this.$store.state.values.address;
               break;
             case "marry":
-              objinfo.marry= this.$store.state.values.marry;
+              objinfo.marry = this.$store.state.values.marry;
               break;
             case "hobbies":
-              objinfo.hobbies= this.$store.state.values.hobbies;
+              objinfo.hobbies = this.$store.state.values.hobbies;
               break;
             case "monologue":
               objinfo.monologue = this.$store.state.values.monologue;
@@ -483,25 +530,27 @@ export default {
           return (mark = true);
         }
       }
-       for(let key in objinfo) {
-            fordata.append(key,objinfo[key]);
-        } 
-        console.log(fordata);
-        this.$store.state.selfInfo = objinfo
-        console.log(this.$store.state.selfInfo)
-            axios({
-              url: "http://10.8.157.63:8080/user/updateUserInfo",
-              method:"post",
-              data:fordata,
-              headers:{
-                  'Content-Type':'multipart/form-data'
-              }
-           }).then(function(data){
-               console.log(data)
-               othis.$router.push({path:'/myself'})
-           }).catch(function(err){
-               console.log(err)
-           })
+      for (let key in objinfo) {
+        fordata.append(key, objinfo[key]);
+      }
+      console.log(fordata);
+      this.$store.state.selfInfo = objinfo;
+      console.log(this.$store.state.selfInfo);
+      axios({
+        url: "http://10.8.157.63:8080/user/updateUserInfo",
+        method: "post",
+        data: fordata,
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then(function(data) {
+          //  console.log(data)
+          othis.$router.push({ path: "/myself" });
+        })
+        .catch(function(err) {
+          //  console.log(err)
+        });
     },
     show() {
       this.shows = true;
@@ -624,12 +673,11 @@ export default {
 </script>
 <style scoped>
 #mid {
-  margin-bottom: 50px
+  margin-bottom: 50px;
 }
 #but {
   margin: 30px 0;
   background: pink;
   border-color: pink;
 }
-
 </style>

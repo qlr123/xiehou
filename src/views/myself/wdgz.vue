@@ -62,7 +62,7 @@ export default {
   methods: {
     addgzs(data) {
       let odata = data;
-      console.log(data.srcElement.id);
+      // console.log(data.srcElement.id);
       axios({
         method: "post",
         url: "http://10.8.157.63:8080/user/saveOrUpdateAttention",
@@ -71,7 +71,7 @@ export default {
           focused: data.srcElement.id
         })
       }).then(data => {
-        console.log(data);
+        // console.log(data);
 
         switch (data.data) {
           case 0:
@@ -106,7 +106,7 @@ export default {
       url: "http://10.8.157.63:8080/user/myFocused",
       data: qs.stringify({ id: localStorage.getItem("userId") })
     }).then(data => {
-      console.log(data); //关注我的
+      // console.log(data); //关注我的
       this.values = data.data;
     });
 
@@ -115,7 +115,7 @@ export default {
       url: "http://10.8.157.63:8080/user/myAttention",
       data: qs.stringify({ id: localStorage.getItem("userId") })
     }).then(data => {
-      console.log(data); //我关注的
+      // console.log(data); //我关注的
       this.values2 = data.data;
     });
   }

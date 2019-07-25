@@ -59,7 +59,8 @@ export default {
   beforeCreate() {
     let data = this.$store.state.favoredType;
     data.id = this.$store.state.userID;
-    console.log(data);
+    // console.log(data);
+
     axios({
       method: "post",
       url: "http://10.8.157.63:8080/user/chooseMate",
@@ -68,10 +69,10 @@ export default {
         "Content-Type": "multipart/form-data"
       }
     }).then(data => {
-      console.log(data.data[0]);
+      // console.log(data.data[0]);
       this.otherinfo = data.data[0];
       this.titles = this.otherinfo.username;
-      console.log(this.chatdata);
+      // console.log(this.chatdata);
     });
   },
 
@@ -111,7 +112,7 @@ export default {
           api_secret: "0a83lrp1kb16"
         }
       }).then(data => {
-        console.log(data.data);
+        // console.log(data.data);
         this.chatdata.push({
           chatinfo: data.data,
           username: "other",
@@ -120,8 +121,8 @@ export default {
         this.chating = "";
         let scrollTop =
           document.body.scrollTop || document.documentElement.scrollTop;
-        console.log(scrollTop);
-        console.log();
+        // console.log(scrollTop);
+
         if (document.body.scrollHeight > 667) {
           document.body.scrollTop = document.documentElement.scrollTop =
             document.body.scrollHeight;
